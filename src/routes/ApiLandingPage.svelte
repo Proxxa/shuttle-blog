@@ -3,7 +3,7 @@
     let output = "pending...";
     let duration;
     const start = Date.now();
-    fetch("hello")
+    fetch("/api/hello")
         .then(res => res.text())
         .then(text => {
             output = text
