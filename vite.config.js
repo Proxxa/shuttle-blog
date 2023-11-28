@@ -8,9 +8,11 @@ import { svelte } from '@sveltejs/vite-plugin-svelte'
 export default defineConfig({
   plugins: [svelte()],
   build: {
-    outDir: "shuttle/static"
+    outDir: "shuttle/static",
+    copyPublicDir: true,
+    chunkSizeWarningLimit: 900,
   },
   optimizeDeps: {
     exclude: ["svelte-navigator"]
-  }
+  },
 })

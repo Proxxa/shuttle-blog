@@ -9,7 +9,9 @@
     import Blog from "./routes/Blog.svelte";
 </script>
 
-<link rel="icon" type="image/png" href={favicon} />
+<head>
+    <link rel="icon" type="image/png" href={favicon} />
+</head>
 
 <Router>
     <nav>
@@ -19,6 +21,7 @@
         <GithubLink/>    
     </nav>
 
+    <Route path="blog/:blogId" component="{Blog}"/>
     <Route path="blog" component="{Blog}"/>
     <Route path="/api" component="{ApiLandingPage}"/>
     <Route path="/" component="{Home}"/>
