@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import SvelteMarkdown from 'svelte-markdown';
 
     export let blogId = null;
@@ -14,4 +14,8 @@
     
 </script>
 
-<SvelteMarkdown source={markdown} />
+<main>
+    <div class="blog">
+        <SvelteMarkdown source={markdown} />
+    </div>
+</main>

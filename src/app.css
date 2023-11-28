@@ -4,6 +4,19 @@
   --link-color: #000;
   --nav-background: #aaaaf2;
   font-family: 'Fira Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.blog {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50vw;
+  font-size: larger;
+}
+
+.blog > h1 {
+  text-align: center;
 }
 
 h1:focus {
@@ -58,6 +71,19 @@ nav > a:hover {
 .paragraphHolder > p {
   text-indent: 2em;
   max-width: 35%;
+}
+
+.blog > p {
+  text-indent: 0.5in;
+  color: var(--shuttle-gradient);
+}
+
+.shuttletext {
+  background: linear-gradient(45deg, #f42a29, #e5e838);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  max-width: fit-content;
 }
 
 /* Basic rule to grow as much as possible */
