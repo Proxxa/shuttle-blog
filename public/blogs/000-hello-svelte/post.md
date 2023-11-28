@@ -1,6 +1,3 @@
-# Hello, Svelte!
-## Written Tuesday, November 28, 2023
-#### By Yori
 
 #### Table of Contents
 
@@ -29,6 +26,18 @@ and the project is apparently using Hyper and Tower. Goodness, Jeff, I do not wa
 my desire to finally use Svelte wins, so I decide to make an entire site dedicated to shuttle blogging. Who knows, maybe someone
 would want to read.
 
+## Start
+
+Unlike most [Shuttle][shuttlers] projects, this one doesn't start with `cargo shuttle init`. That's because we need [Vite][vite]/[Svelte][svelte]
+to actually build, and there's no guarantee with Shuttle that our server will have `npm` installed. Even then, there's no guarantee
+that we'll be able to write to disk, though if we can't, I personally wouldn't use that server vendor for long. Because there's no
+guarantee that we can run `npm install` in our `build.rs` script, we instead need our Shuttle project to be a subfolder of our Svelte
+project.
+
+First, let's run `npm create vite@latest` and create a Svelte/JS project. TypeScript would work as well, but do not use SvelteKit.
+To my current knowledge, SvelteKit builds a server itself, so unless we want to write an API to access an internal SvelteKit server,
+we shouldn't use SvelteKit. I'll try it sometime, but not right now. If I try it, and it works, I might write a blog on it.
+
 # This blog post isn't finished.
 
 Check back some other time and I might have it done.
@@ -50,6 +59,8 @@ Check back some other time and I might have it done.
 
 [Svelte][svelte]
 
+[Vite][vite]
+
 
 
 [aoc]: https://adventofcode.com/
@@ -60,3 +71,4 @@ Check back some other time and I might have it done.
 [shuttlers]: https://shuttle.rs/
 [svelte]: https://svelte.dev/ 
 [this@github]: https://github.com/proxxa/shuttle-blog/
+[vite]: https://vitejs.dev/

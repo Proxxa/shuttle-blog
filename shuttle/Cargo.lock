@@ -1396,10 +1396,14 @@ dependencies = [
 name = "proxxa-shuttleblog"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "rocket",
+ "serde",
+ "serde_json",
  "shuttle-rocket",
  "shuttle-runtime",
  "tokio",
+ "tracing",
 ]
 
 [[package]]
@@ -1554,6 +1558,7 @@ dependencies = [
  "rocket_codegen",
  "rocket_http",
  "serde",
+ "serde_json",
  "state",
  "tempfile",
  "time",
