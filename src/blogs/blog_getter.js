@@ -17,7 +17,7 @@ free to check out the [Github](https://github.com/proxxa/shuttle-blog).
  * @returns {Promise<String>}
  */
 export function import_blog(id) {
-    if (isNaN(id))
+    if (!(id in blog_list))
         return new Promise(s => s(BAD_ID_MARKDOWN));
     return new Promise((s,j) => {
         fetch(blog_list[id])
