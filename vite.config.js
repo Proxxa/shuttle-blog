@@ -9,5 +9,8 @@ export default defineConfig({
   plugins: [svelte()],
   build: {
     outDir: "shuttle/static"
+  },
+  optimizeDeps: {
+    exclude: ["svelte-navigator"]
   }
 })

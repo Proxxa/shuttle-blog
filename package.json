@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "run": "cargo shuttle run --wd shuttle",
+    "run": "vite build && cargo shuttle run --wd shuttle",
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "vite build && cargo shuttle deploy --ad --wd shuttle"
@@ -12,6 +12,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "svelte": "^4.2.3",
+    "svelte-navigator": "^3.2.2",
     "vite": "^5.0.0"
   }
 }
