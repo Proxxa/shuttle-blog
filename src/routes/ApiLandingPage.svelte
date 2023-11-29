@@ -3,7 +3,7 @@
     let output = "pending...";
     let duration;
     const start = Date.now();
-    fetch("/api/hello")
+    fetch("/api/blogs")
         .then(res => res.text())
         .then(text => {
             output = text
@@ -12,11 +12,10 @@
 </script>
 
 <main>
-    <h1>
-        API
-    </h1>
-
-    <div class="paragraphHolder">
+    <div class="blog">
+        <h1>
+            API
+        </h1>
         <p>
             Hi! You shouldn't be here. It might be a good idea to <Link to="/">go home</Link>.
             The API is nothing right now. Come back later and I <i>might</i> have information on it.
