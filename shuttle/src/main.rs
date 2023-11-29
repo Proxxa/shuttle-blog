@@ -40,7 +40,10 @@ async fn main() -> shuttle_rocket::ShuttleRocket {
             "/",
             FileServer::new(relative!("static"), Options::Index).rank(-999),
         )
-        .mount("/api", routes![api::hello, api::blogs, api::blog_content, api::blog_data])
+        .mount(
+            "/api",
+            routes![api::hello, api::blogs, api::blog_content, api::blog_data],
+        )
         .manage(api::BlogPosts {
             last: Mutex::new(Instant::now() - Duration::DAY),
             list: Mutex::new(HashMap::new()),

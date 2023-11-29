@@ -110,6 +110,9 @@ pub async fn blog_data(id: &str, post_state: &State<BlogPosts>) -> Result<Json<B
     let blogs = blogs(post_state)
         .await
         .expect("Failed to get blogs. Does the blogs folder exist?");
-    let post = blogs.get(id).ok_or_else (|| { warn!("No such blog `{id}`");NOT_FOUND_STATUS})?;
+    let post = blogs.get(id).ok_or_else(|| {
+        warn!("No such blog `{id}`");
+        NOT_FOUND_STATUS
+    })?;
     Ok(Json(post.meta.clone()))
 }
