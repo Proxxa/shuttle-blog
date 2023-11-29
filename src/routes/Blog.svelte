@@ -1,26 +1,45 @@
 <script lang="ts">
     import SvelteMarkdown from "svelte-markdown";
+    import LinkList from "../lib/LinkList.svelte";
+    import { ComponentRenderConfig, Render, createRender } from "svelte-render";
     import { import_blog, list_blogs } from "../blogs/blog_getter";
+    import { writable } from "svelte/store";
 
-    export let blogId = null;
+    enum PageType {
+        Post,
+        List,
+        NotFound
+    }
 
-    let markdown = "# Loading Blog Article...";
-    let divClass = "blog"
+    export let blogId: string = null;
+    let pageType = blogId ? PageType.Post : PageType.List;
+    const divClass = () => pageType == PageType.NotFound ? "" : "blog";
+    const dummy = () => null;
 
-    async function default_page(): Promise<string> {
+    let markdownSource = writable({ source: "# Loading Blog Article..." });
+    let render: ComponentRenderConfig<any> = createRender(SvelteMarkdown, markdownSource);
+
+    if (pageType == PageType.List)
+        default_page().then(dummy)
+    else if (pageType == PageType.Post)
+        blog_page().then(dummy)
+    
+
+    async function default_page() {
         try {
+
             let blogIter = Object.values(await list_blogs());
-            console.log(blogIter);
             let blogs = [];
-            for (const blog of blogIter)
-                blogs.push(blog.meta)
-            console.log(blogs);
-            return `# Blogs
-`.concat(blogs.map(b => ` - [${b.title}](/blog/${b.id}) by ${b.author}. ${b.description}`).join('\n'));
+
+            for (const blog of blogIter) blogs.push(blog.meta);
+
+            blogs = blogs.sort((a,b)=> a.ordering - b.ordering).map(b => [b.title, `/blog/${b.id}`, `by ${b.author}. ${b.description}`])
+            markdownSource.set({source: ""});
+            render = createRender(LinkList, { styles:"blog", header: "Blogs", links: blogs });
         } catch (err) {
+
             reportError(err);
-            return `
-# Encountered an error.
+            let source = `# Encountered an error.
 
 It seems we've encountered an error:
 <pre>
@@ -29,24 +48,28 @@ It seems we've encountered an error:
     </code>
 </pre>
 `;
+
+            markdownSource.set({ source });
         }
     }
-    
-    (async (blogId) => {
-        if (blogId == null) return (markdown = await default_page());
+
+    async function blog_page() {
+        if (blogId == null) return default_page();
 
         let { text, meta } = await import_blog(blogId);
+        let source: string;
         if (meta.id == blogId)
-            markdown = `# ${meta.title}\n## Written by ${meta.author}\n\n${text}`;
-        else {
-            markdown = `# 404.
-That page doesn't exist.`
-        }
-    })(blogId);
+            source = `# ${meta.title}\n## Written by ${meta.author}\n\n${text}`;
+        else
+            source = `# 404.
+That page doesn't exist.`;
+
+        markdownSource.set({ source });
+    }
 </script>
 
 <main>
-    <div class={divClass}>
-        <SvelteMarkdown source={markdown} />
+    <div class={divClass()}>
+        <Render of={render} />
     </div>
 </main>

@@ -1,89 +1,88 @@
 @import url(https://fonts.bunny.net/css?family=fira-sans:100,200,300,400,500,600,700,800,900);
 
 :root {
-  --link-color: #000;
-  --nav-background: #aaaaf2;
-  font-family: 'Fira Sans', sans-serif;
-  scroll-behavior: smooth;
-  background-color: #FFF;
+    --link-color: #000;
+    --nav-background: #aaaaf2;
+    font-family: "Fira Sans", sans-serif;
+    scroll-behavior: smooth;
+    background-color: #fff;
 }
 
 .blog {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: larger;
-  min-width: 50vw;
-  max-width: 100vw;
-  width: 7in;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: larger;
+    min-width: 50vw;
+    max-width: 95vw;
+    width: 7in;
 }
 
 .blog > h1 {
-  text-align: center;
+    text-align: center;
 }
 
 .blog > p {
-  text-indent: 0.5in;
+    text-indent: 0.5in;
 }
 
 h1:focus {
-  outline: none;
+    outline: none;
 }
 
 h1 {
-  font-weight: 900;
+    font-weight: 900;
 }
 
-nav {
-  display: flex;
-  padding: 0.35em;
-  max-height: max-content;
-  background-color: var(--nav-background);
-  border-radius: 0.5em;
+#app > nav {
+    display: flex;
+    padding: 0.35em;
+    max-height: max-content;
+    background-color: var(--nav-background);
+    border-radius: 0.5em;
 }
 
 /* Navbar links. */
-nav > a {
-  margin: 0.35em;
-  padding: 0.25em;
-  text-decoration-line: none;
-  color: var(--link-color);
-  font-weight: 600;
-  border-radius: 0.5em;
+#app > nav > a {
+    margin: 0.35em;
+    padding: 0.25em;
+    text-decoration-line: none;
+    color: var(--link-color);
+    font-weight: 600;
+    border-radius: 0.5em;
 
-  transition: background-color 0.25s;
-  background-color: rgba(255,255,255,0);
+    transition: background-color 0.25s;
+    background-color: rgba(255, 255, 255, 0);
 
-  transform: scale(1, 1);
+    transform: scale(1, 1);
 }
 
 /* For  */
-nav > a:focus {
-  transition: transform 0.1s;
-  transform: scale(1.2, 1.2);
-  text-decoration-line: underline;
-  text-decoration-thickness: 10%;
-  outline: none;
+#app > nav > a:focus {
+    transition: transform 0.1s;
+    transform: scale(1.2, 1.2);
+    text-decoration-line: underline;
+    text-decoration-thickness: 10%;
+    outline: none;
 }
 
 /* Neat little background hover. Fades in slower than it fades out. */
-nav > a:hover {
-  transition: background-color 0.5s;
-  background-color: rgba(255,255,255,0.3);
-  transition: transform 0.1s;
-  transform: scale(1.2, 1.2);
+#app > nav > a:hover {
+    transition: background-color 0.5s;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: transform 0.1s;
+    transform: scale(1.2, 1.2);
 }
 
-
 .shuttletext {
-  background: linear-gradient(90deg, #f42a29, #e5e838);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  max-width: fit-content;
+    background: linear-gradient(90deg, #f42a29, #e5e838);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    max-width: fit-content;
 }
 
 /* Basic rule to grow as much as possible */
 .navSpacer {
-  flex-grow: 1;
+    flex-grow: 1;
 }

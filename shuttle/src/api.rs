@@ -90,13 +90,14 @@ pub async fn blogs(
 }
 
 #[get("/blog/<id>")]
-pub async fn blog_content(id: String, post_state: &State<BlogPosts>) -> Result<NamedFile, Status> {
+pub async fn blog_content(id: &str, post_state: &State<BlogPosts>) -> Result<NamedFile, Status> {
     let blogs = blogs(post_state)
         .await
         .expect("Failed to get blogs. Does the blogs folder exist?");
-    let post = blogs.get(&id).ok_or(NOT_FOUND_STATUS)?;
+    let post = blogs.get(id).ok_or(NOT_FOUND_STATUS)?;
     NamedFile::open(post.filepath.clone()).await.map_err(|err| {
         if err.kind() == io::ErrorKind::NotFound {
+            warn!("Could not find `{}`", post.filepath.display());
             NOT_FOUND_STATUS
         } else {
             INTERNAL_ERROR_STATUS
@@ -105,10 +106,10 @@ pub async fn blog_content(id: String, post_state: &State<BlogPosts>) -> Result<N
 }
 
 #[get("/blogdata/<id>")]
-pub async fn blog_data(id: String, post_state: &State<BlogPosts>) -> Result<Json<BlogMeta>, Status> {
+pub async fn blog_data(id: &str, post_state: &State<BlogPosts>) -> Result<Json<BlogMeta>, Status> {
     let blogs = blogs(post_state)
         .await
         .expect("Failed to get blogs. Does the blogs folder exist?");
-    let post = blogs.get(&id).ok_or(NOT_FOUND_STATUS)?;
+    let post = blogs.get(id).ok_or_else (|| { warn!("No such blog `{id}`");NOT_FOUND_STATUS})?;
     Ok(Json(post.meta.clone()))
 }

@@ -4,6 +4,7 @@ type BlogMetadata = {
     author: string;
     description: string;
     image: string;
+    ordering: number;
 };
 
 const emptyMetadata: BlogMetadata = {
@@ -11,7 +12,8 @@ const emptyMetadata: BlogMetadata = {
     title: "",
     author: "",
     description: "",
-    image: ""
+    image: "",
+    ordering: 0,
 }
 
 const fetchOptions: RequestInit = {
