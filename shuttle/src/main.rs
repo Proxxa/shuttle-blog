@@ -35,10 +35,13 @@ async fn home_blog_override(_blogid: Option<usize>) -> NamedFile {
 async fn main() -> shuttle_rocket::ShuttleRocket {
     let rocket = rocket::build()
         .mount("/", routes![home, home_blog_override])
-        .mount("/blog", routes![home])
         .mount(
-            "/",
-            FileServer::new(relative!("static"), Options::Index).rank(-999),
+            "/assets",
+            FileServer::new(relative!("static/assets"), Options::Index),
+        )
+        .mount(
+            "/public",
+            FileServer::new(relative!("static"), Options::Index),
         )
         .mount(
             "/api",

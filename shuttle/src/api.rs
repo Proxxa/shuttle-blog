@@ -35,6 +35,7 @@ pub struct BlogMeta {
     pub author: String,
     pub description: String,
     pub image: Option<String>,
+    pub ordering: usize,
 }
 
 #[derive(Serialize, Clone)]
@@ -46,6 +47,7 @@ pub struct BlogPost {
 
 const NOT_FOUND_STATUS: Status = Status { code: 404 };
 const INTERNAL_ERROR_STATUS: Status = Status { code: 500 };
+const CARGO_MANIFEST: &str = env!("CARGO_MANIFEST_DIR");
 
 /// Return a list of all blog posts with metadata.
 ///
@@ -77,7 +79,12 @@ pub async fn blogs(
                         continue
                     };
 
-                    posts.insert(meta.id.clone(), BlogPost { filepath: ed.path().join("post.md"), meta });
+                    let filepath = ed.path();
+                    let Ok(filepath) = filepath.strip_prefix(CARGO_MANIFEST) else {
+                        warn!("Cannot remove {CARGO_MANIFEST} from {}", ed.path().display());
+                        continue
+                    };
+                    posts.insert(meta.id.clone(), BlogPost { filepath: filepath.join("post.md"), meta });
                 }
                 posts
             })
