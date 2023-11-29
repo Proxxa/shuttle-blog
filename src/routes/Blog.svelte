@@ -42,7 +42,7 @@
     let render: ComponentRenderConfig<any> = createRender(SvelteMarkdown, markdownSource);
 
     unsubs.push(markdownSource.subscribe(
-        _ => setTimeout(() => hljs.highlightAll(), 10),
+        _ => setTimeout(() => hljs.highlightAll(), 0),
         _ => {},
     ))
 
