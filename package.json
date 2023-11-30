@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "run": "vite build && cargo shuttle run --wd shuttle",
-    "live": "vite build --watch & cargo watch -C shuttle -x 'shuttle run' ; kill %1 ; kill %2",
+    "run": "vite build --mode development && cargo shuttle run --wd shuttle",
+    "live": "vite build --watch --mode development & vite build --mode development && cargo watch -C shuttle -x 'shuttle run' ; kill %1 ; kill %2",
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "vite build && cargo shuttle deploy --ad --wd shuttle"

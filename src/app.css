@@ -29,6 +29,10 @@
     text-indent: 0.5in;
 }
 
+.blog img {
+    border: 1px solid #000;
+}
+
 .inlinecode {
     border-radius: 1mm;
     background-color: rgb(13, 17, 23);
@@ -36,6 +40,11 @@
     padding-left: 1.25mm;
     padding-bottom: 0.5mm;
     overflow-x: visible;
+}
+
+.codelink {
+    text-decoration: none;
+    font-weight: bolder;
 }
 
 .inlinecode code {

@@ -3,6 +3,23 @@
     import ShuttleLink from "../lib/ShuttleLink.svelte";
 </script>
 
+<svelte:head>
+    <meta name="description" content="A blog on Shuttle.rs, about Shuttle.rs.">
+  
+    <meta property="og:url" content="https://proxxa-shuttleblog.shuttleapp.rs/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Yori's Shuttle Blog">
+    <meta property="og:description" content="A blog on Shuttle.rs, about Shuttle.rs.">
+    <meta property="og:image" content="https://proxxa-shuttleblog.shuttleapp.rs/">
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="proxxa-shuttleblog.shuttleapp.rs">
+    <meta property="twitter:url" content="https://proxxa-shuttleblog.shuttleapp.rs/">
+    <meta name="twitter:title" content="Yori's Shuttle Blog">
+    <meta name="twitter:description" content="A blog on Shuttle.rs, about Shuttle.rs.">
+    <meta name="twitter:image" content="https://proxxa-shuttleblog.shuttleapp.rs/">
+</svelte:head>
+
 <main>
     <div class="blog">
         

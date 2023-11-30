@@ -3,8 +3,6 @@
     export let header: string = "Links";
     export let links: ([string, string] | [string, string, string])[] = [];
     export let styles: string = "";
-
-    console.log(links);
 </script>
 
 <main class={styles}>
@@ -14,10 +12,10 @@
     <Router>
         <nav>
             <ul>
-                {#each links as link, i}
+                {#each links as link}
                     <li>
                         <Link to={link[1]}>{link[0]}</Link>
-                        {link[2] ?? ""}
+                        {@html link[2] ?? ""}
                     </li>
                 {/each}
             </ul>

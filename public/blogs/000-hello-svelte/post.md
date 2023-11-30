@@ -1,21 +1,21 @@
 #### Table of Contents
 
-1. [Table of Contents](#table-of-contents)
-2. [Introduction](#introduction)
-3. [Inspiration](#the-inspiration)
-4. [Start](#start)
-5. [Configuration](#configuration)
-6. [Routing](#routing)
-7. [Blogs](#blogs)
-   1. [Layout](#layout)
-   2. [API](#api)
-   3. [API Routing](#api-routing)
-      1. [API Testing](#api-testing)
-   4. [Blog Frontend](#blog-frontend)
-8. [Extra Pages](#extra-pages)
-9. [Final Testing](#final-testing)
-10. [Reflection](#reflection)
-11. [Links](#links-used)
+1. [Table of Contents](#table-of-contents "Table of Contents")
+2. [Introduction](#introduction "Introduction")
+3. [Inspiration](#the-inspiration "Blog Inspiration")
+4. [Start](#start "Starting the Website")
+5. [Configuration](#configuration "Configuring the Project")
+6. [Routing](#routing "Site Routing")
+7. [Blogs](#blogs "Creating Blogs")
+   1. [Layout](#layout "Laying out the API")
+   2. [API](#api "Implementing the API")
+   3. [API Routing](#api-routing "Routing the API")
+      1. [API Testing](#api-testing "Testing the API")
+   4. [Blog Frontend](#blog-frontend "Creating a blog frontend")
+8. [Extra Pages](#extra-pages "Creating unnecessary pages")
+9. [Final Testing](#final-testing "The last round of testing")
+10. [Reflection](#reflection "Reflecting on the project")
+11. [Links](#links-used "A Pseudo-bibliography")
 
 ### Introduction
 
@@ -25,6 +25,10 @@ no further than the [homepage][home]. Obviously, **this blog post will assume un
 If you are not familiar with either, a lot of this will go over your head.
 
 Alright? Alright. Let's go.
+
+##### Updates as of Nov. 30, 2023
+
+This has been updated for links that are `inline code` to be bolded like **`this`**.
 
 <h2 class="shuttletext" id="the-inspiration">
 The Inspiration
@@ -40,7 +44,7 @@ would want to read.
 ## Start
 
 Unlike most [Shuttle][shuttlers] projects, this one doesn't start with `cargo shuttle init`. That's because we need [Vite][vite]/[Svelte][svelte]
-to actually build, and there's no guarantee with Shuttle that our server will have `npm` installed. Even then, there's no guarantee
+to actually build, and there's no guarantee with Shuttle that our server will have [`npm`][npm] installed. Even then, there's no guarantee
 that we'll be able to write to disk, though if we can't, I personally wouldn't use that server vendor for long. Because there's no
 guarantee that we can run `npm install` in our `build.rs` script, we instead need our Shuttle project to be a subfolder of our Svelte
 project.
@@ -124,8 +128,8 @@ Perfect. This will do for now, but we'll probably need much more in the future.
 
 Svelte is fantastic, but it's no SvelteKit. SvelteKit would automatically create routing for me, but I'm using
 Svelte. I need packages. There's no way I'm manully editing `project/package.json` again, so I run 
-do us wonders. Let's look at `project/src/App.svelte`. I know I'm going to need a navigation bar, a `/blog` route,
 `npm install --save-dev --force svelte-navigator`. That installs [`svelte-navigator`][svelte-navigator]. For some reason, I need `--force` to install it, but it'll
+do us wonders. Let's look at `project/src/App.svelte`. I know I'm going to need a navigation bar, a `/blog` route,
 a `/blog/<id>` route, and probably an `/api` route just to be nice. Oh, and I need a home page. Can't forget a
 homepage.
 
@@ -739,7 +743,7 @@ I almost forgot—I have a blog list to check! Let's see here...
 Has it been worth it? Yes. Did everything really go that smoothly? No. I'm not an expert on Svelte, so I had a
 few mishaps on the way.
 
-# Links Used
+<!-- # Links Used
 ## In alphabetical order
 
 [Advent of Code][aoc]
@@ -756,22 +760,23 @@ few mishaps on the way.
 
 [Svelte][svelte]
 
-[Vite][vite]
+[Vite][vite] -->
 
 
 
-[aoc]: https://adventofcode.com/
-[cch]: https://shuttle.rs/cch
-[highlight.js]: https://github.com/bryanmylee/svelte-render/
-[home]: /
-[jeffmitchelldiary]: https://sentinel1909-shuttle-cch.shuttleapp.rs/
-[rustlang]: https://rust-lang.org/
-[serde]: https://serde.rs/
-[serde_json]: https://docs.rs/serde_json/
-[shuttlers]: https://shuttle.rs/
-[svelte]: https://svelte.dev/ 
-[svelte-navigator]: https://github.com/mefechoel/svelte-navigator/
-[svelte-render]: https://github.com/bryanmylee/svelte-render/
-[this@github]: https://github.com/proxxa/shuttle-blog/
-[tracing-rs]: https://docs.rs/tracing/
-[vite]: https://vitejs.dev/
+[aoc]: https://adventofcode.com/ "Advent of Code"
+[cch]: https://shuttle.rs/cch "Shuttle's Christmas Code Hunt"
+[highlight.js]: https://github.com/bryanmylee/svelte-render/ "Highlight.JS"
+[home]: / "Homepage"
+[jeffmitchelldiary]: https://sentinel1909-shuttle-cch.shuttleapp.rs/ "Jeff Mitchell's CCH Blog"
+[npm]: https://npmjs.com/ "npm"
+[rustlang]: https://rust-lang.org/ "Rust"
+[serde]: https://serde.rs/ "Serde"
+[serde_json]: https://docs.rs/serde_json/ "serde_json"
+[shuttlers]: https://shuttle.rs/ "Shuttle"
+[svelte]: https://svelte.dev/ "Svelte"
+[svelte-navigator]: https://github.com/mefechoel/svelte-navigator/ "svelte-navigator"
+[svelte-render]: https://github.com/bryanmylee/svelte-render/ "svelte-render"
+[this@github]: https://github.com/proxxa/shuttle-blog/ "Github"
+[tracing-rs]: https://docs.rs/tracing/ "tracing"
+[vite]: https://vitejs.dev/ "Vite"
