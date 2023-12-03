@@ -6,6 +6,7 @@
     import { writable, type Unsubscriber } from "svelte/store";
     import MarkdownCodeSpan from "../lib/markdown/MarkdownCodeSpan.svelte";
     import MarkdownCodeBlock from "../lib/markdown/MarkdownCodeBlock.svelte";
+    import MarkdownImage from "../lib/markdown/MarkdownImage.svelte";
 
     import "highlight.js/styles/github-dark.min.css";
     import hljs from "highlight.js/lib/core";
@@ -39,7 +40,7 @@
 
     let blogMeta = null;
 
-    let hack,
+    let linkListHack,
         renderLinkList = false,
         links = [],
         linkRenderStore = writable({ header: "", links: [], styles: ""}),
@@ -48,54 +49,54 @@
         
     
     let linksInterval = setInterval(() => {
-        if (hack) {
+        if (linkListHack) {
             let newLinks = [];
             let linkSet = {};
-
-            let linkElements = hack.getElementsByTagName("a");
-
+            
+            let linkElements = linkListHack.getElementsByTagName("a");
+            
             let t = document.createElement("textarea");
             for (const link of linkElements)
-                if (!link.getAttribute("href").startsWith("#")) {
-                    let href = link.getAttribute("href");
-
-                    if (link.hasAttribute("title")) {
-                        t.innerHTML = link.title
-                        linkSet[href] = [t.value, href];
-                    } else {
-                        if (!(href in linkSet))
-                            linkSet[href] = new Array(2).fill(
-                                link.getAttribute("href"),
-                            );
-                    }
-                }
-
-            for (const link in linkSet) newLinks.push(linkSet[link]);
-            
-            renderLinkList = true;
-            newLinks.sort();
-
-            function arraysEqual(a, b, ignoreType = false) {
-                return (!ignoreType || (Array.isArray(a) && 
-                Array.isArray(b))) &&
-                a.length == b.length &&
-                a.every((c, i) => {
-                    let d = b[i];
-                    if (Array.isArray(c)) {
-                        if (Array.isArray(d)) {
-                            return arraysEqual(c, d, true)
-                        } 
-                        return false
-                    }
-                    return c == d
-                })
+            if (!link.getAttribute("href").startsWith("#")) {
+                let href = link.getAttribute("href");
+                
+                if (link.hasAttribute("title")) {
+                    t.innerHTML = link.title
+                    linkSet[href] = [t.value, href];
+                } else {
+                    if (!(href in linkSet))
+                    linkSet[href] = new Array(2).fill(
+                link.getAttribute("href"),
+                );
             }
+        }
+        
+        for (const link in linkSet) newLinks.push(linkSet[link]);
 
-            
-            if (newLinks.length > 0 && !arraysEqual(links, newLinks))
-                links = newLinks;
-            else
-                clearInterval(linksInterval);
+        newLinks.sort();
+        
+        function arraysEqual(a, b, ignoreType = false) {
+            return (!ignoreType || (Array.isArray(a) && 
+            Array.isArray(b))) &&
+            a.length == b.length &&
+            a.every((c, i) => {
+                let d = b[i];
+                if (Array.isArray(c)) {
+                    if (Array.isArray(d)) {
+                        return arraysEqual(c, d, true)
+                    } 
+                    return false
+                }
+                return c == d
+            })
+        }
+        
+        if (!arraysEqual(links, newLinks))
+            links = newLinks;
+        else if (links.length > 0) {
+            clearInterval(linksInterval);
+            renderLinkList = true
+        }
 
             linkRenderStore.set({ links, header: "Links Used", styles: "blog" });;
         }}, 100);
@@ -108,6 +109,7 @@
             codespan: MarkdownCodeSpan,
             code: MarkdownCodeBlock,
             link: MarkdownLink,
+            image: MarkdownImage,
         },
     });
     let unsubs: Unsubscriber[] = [];
@@ -130,6 +132,7 @@
     else if (pageType == PageType.Post) blog_page().then(dummy);
 
     async function default_page() {
+
         try {
             let blogIter = Object.values(await list_blogs());
             let blogs = [];
@@ -190,10 +193,13 @@ That page doesn't exist.`;
             source,
             renderers: store.renderers,
         }));
+
+
     }
 
     import { onMount } from "svelte";
     import MarkdownLink from "../lib/markdown/MarkdownLink.svelte";
+    import { marked } from "marked";
     let url = null;
     onMount(() => (url = window.location.href));
 </script>
@@ -253,10 +259,10 @@ That page doesn't exist.`;
 </svelte:head>
 
 <div class={divClass()}>
-    <div bind:this={hack}>
+    <div bind:this={linkListHack}>
         <Render of={render} />
     </div>
-    {#if pageType == PageType.Post}
+    {#if pageType == PageType.Post && renderLinkList}
     <Render of={linkRender} />
     {/if}
 </div>

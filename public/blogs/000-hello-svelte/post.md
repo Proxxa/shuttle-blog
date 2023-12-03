@@ -1,21 +1,17 @@
 #### Table of Contents
 
-1. [Table of Contents](#table-of-contents "Table of Contents")
-2. [Introduction](#introduction "Introduction")
-3. [Inspiration](#the-inspiration "Blog Inspiration")
-4. [Start](#start "Starting the Website")
-5. [Configuration](#configuration "Configuring the Project")
-6. [Routing](#routing "Site Routing")
-7. [Blogs](#blogs "Creating Blogs")
-   1. [Layout](#layout "Laying out the API")
-   2. [API](#api "Implementing the API")
-   3. [API Routing](#api-routing "Routing the API")
-      1. [API Testing](#api-testing "Testing the API")
-   4. [Blog Frontend](#blog-frontend "Creating a blog frontend")
-8. [Extra Pages](#extra-pages "Creating unnecessary pages")
-9. [Final Testing](#final-testing "The last round of testing")
-10. [Reflection](#reflection "Reflecting on the project")
-11. [Links](#links-used "A Pseudo-bibliography")
+- [Start](#start)
+- [Configuration](#configuration)
+- [Routing](#routing)
+- [Blogs](#blogs)
+  - [Layout](#layout)
+  - [API](#api)
+  - [API Routing](#api-routing)
+    - [API Testing](#api-testing)
+  - [Blog Frontend](#blog-frontend)
+- [Extra Pages](#extra-pages)
+- [Final Testing](#final-testing)
+- [Reflection](#reflection)
 
 ### Introduction
 

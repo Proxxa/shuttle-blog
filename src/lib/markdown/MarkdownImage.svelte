@@ -38,14 +38,12 @@
             }
         }, element);
 
-        finalText = element.innerHTML;
+        finalText = element.innerText;
         finalClasses = element.className;
     }
 </script>
 
 <span style="display:none;" bind:this={hack}><Render of={textRender} /></span>
-{#if !(href.startsWith('#') || href.includes("://")) }
-<Link to={href} {title} class={finalClasses}>{@html finalText}</Link>
-{:else}
-<a {href} {title} class={finalClasses}>{@html finalText}</a>
-{/if}
+<div class="scroll-x">
+    <img src={href} {title} alt={finalText} class={finalClasses}/>
+</div>
