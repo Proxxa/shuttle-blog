@@ -4,7 +4,7 @@
 - [Task 1](#task-1)
   - [Prompt](#prompt)
   - [Solution](#solution)
-- [Task 2/3](#task-23)
+- [Tasks 2/3](#tasks-23)
   - [Bonus Prompts](#bonus-prompts)
   - [Bonus Solutions](#bonus-solutions)
 - [Conclusion](#conclusion)
@@ -79,12 +79,12 @@ curl http://localhost:8000/7/decode \
 {"flour":100,"chocolate chips":20}
 ```
 
-## Task 2/3
+## Tasks 2/3
 
 ### Bonus Prompts
 
-> It turns out that tasks 2 and 3 are basically the same. Here's task 2's prompt:
-> 
+It turns out that tasks 2 and 3 are basically the same. Here's task 2's prompt:
+
 > Now that the recipe is decoded, Santa can get back to baking cookies! Santa is not sure, however, if he has enough of each ingredient to bake a cookie for every elf.
 > 
 > The same type of request as in Task 1 will be sent to a new endpoint, `/7/bake`, but this time Santa needs your help to calculate the amount of cookies he can bake with the ingredients he has in the pantry.
