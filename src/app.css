@@ -33,6 +33,24 @@
     text-indent: 0.5in;
 }
 
+.blog blockquote {
+    position: relative;
+}
+
+.blog blockquote::before {
+    content: "";
+    position: absolute;
+    left: -1%;
+    top: -3%;
+    width: 0.25%;
+    height: 106%;
+    background-color: #ccc;
+}
+
+.blog blockquote p {
+    text-indent: 0;
+}
+
 .blog img {
     border: 1px solid #000;
 }

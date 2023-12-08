@@ -18,7 +18,9 @@ Today, it's all about `^`! No, not exponents; BitXOR! Let's take a look at the T
 
 ### Prompt
 
-Alright, let's see here... "Implement a GET endpoint `/1/<num1>/<num2>` that takes 2 integers in the path, `num1` and `num2`, and returns the result of `(num1 XOR num2) POW 3`, where *XOR* is the exclusive OR operation, and *POW* is exponentiation." Okay, I lied, there is some exponentiation, but the XOR is the weird one.
+Alright, let's see here... 
+
+> Implement a GET endpoint `/1/<num1>/<num2>` that takes 2 integers in the path, `num1` and `num2`, and returns the result of `(num1 XOR num2) POW 3`, where *XOR* is the exclusive OR operation, and *POW* is exponentiation." Okay, I lied, there is some exponentiation, but the XOR is the weird one.
 
 ### Solution
 
@@ -48,9 +50,11 @@ It works! `1 ^ 2` or `0b01 ^ 0b10` is `3` or `0b11`, and 3 cubed is 27.
 
 ### Bonus Prompt
 
-Task 2 is a bonus task. This time, we're going sledding. "The formula is very similar: All packet IDs (integers) are *XOR*'ed with each other, and then the result is (again) raised to the power of 3. The catch is that there can be between 1 and 20 packets in a sled!" This is different. We need to change our endpoint so that it
-accepts a variable number of... numbers. 
+Task 2 is a bonus task. This time, we're going sledding. 
 
+> The formula is very similar: All packet IDs (integers) are *XOR*'ed with each other, and then the result is (again) raised to the power of 3. The catch is that there can be between 1 and 20 packets in a sled!
+
+This is different. We need to change our endpoint so that it accepts a variable number of... numbers. 
 
 ### Bonus Solution
 
@@ -117,8 +121,8 @@ the project to Shuttle without any need to manage git.
 
 [aoc]: https://adventofcode.com/ "Advent of Code"
 [cch]: https://shuttle.rs/cch/ "Shuttle's Christmas Code Hunt"
-[FromSegments]: https://api.rocket.rs/v0.5/rocket/request/trait.FromSegments.html/ "Rocket FromSegments Trait"
+[FromSegments]: https://api.rocket.rs/v0.5/rocket/request/trait.FromSegments.html "Rocket FromSegments Trait"
 [rocketrs]: https://docs.rs/rocket/ "Rocket"
-[rocket-tip]: https://rocket.rs/v0.5/guide/requests/#dynamic-paths/ "Shuttle's Bonus Tip"
-[rocket-multiseg]: https://rocket.rs/v0.5/guide/requests/#multiple-segments/ "Multiple Segments Section"
+[rocket-tip]: https://rocket.rs/v0.5/guide/requests/#dynamic-paths "Shuttle's Bonus Tip"
+[rocket-multiseg]: https://rocket.rs/v0.5/guide/requests/#multiple-segments "Multiple Segments Section"
 [shuttlers]: https://shuttle.rs/ "Shuttle"
