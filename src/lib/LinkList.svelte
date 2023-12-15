@@ -14,7 +14,11 @@
             <ul>
                 {#each links as link}
                     <li>
-                        <Link to={link[1]}>{link[0]}</Link>
+                        {#if !(link[1].startsWith('#') || link[1].includes("://")) }
+                            <Link to={link[1]}>{link[0]}</Link>
+                        {:else}
+                            <a href={link[1]}>{link[0]}</a>
+                        {/if}
                         {@html link[2] ?? ""}
                     </li>
                 {/each}
