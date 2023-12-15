@@ -251,12 +251,21 @@ pub fn bake_cookies(jar: &CookieJar) -> Result<Json<CookiesPantryData>, Status> 
                 d.recipe
                     .iter()
                     .fold(usize::MAX, |a, (k, v)| {
-                        min(a, d.pantry.get(k).unwrap_or(&0) / v)
+                        min(
+                          a,
+                          if v != &0 {
+                              d.pantry.get(k).unwrap_or(&0) / v
+                          } else {
+                              usize::MAX
+                          }
                     }),
             )
         })
 }
 ```
+
+> EDIT: This used to assume v was not 0, but tests released later revealed a test that had a key in the recipe
+> with a 0 value. Devilish!
 
 It's big and scary, but part of that is exactly what monads can do. They're big and scary, but they're elegant.
 I'm handling errors without having to write any `if` statements, and the only "side effects" are the memory allocations
