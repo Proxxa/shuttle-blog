@@ -23,6 +23,8 @@
     min-width: 50vw;
     max-width: 95vw;
     width: 7in;
+
+    z-index: 0;
 }
 
 .blog h1 {
@@ -117,6 +119,7 @@ h1 {
     border-bottom-right-radius: var(--border-bottom-radius);
     transition: top 0.3s;
 
+    z-index: 999;
 }
 
 /* Navbar links. */
@@ -133,6 +136,7 @@ h1 {
     background-color: rgba(255, 255, 255, 0);
 
     transform: scale(1, 1);
+
 }
 
 /* For accessibility features */
